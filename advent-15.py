@@ -32,13 +32,14 @@ def ab(m, limit):
 
 
 for limit in [2020, 30000000]:
-    print(ab([9,3,1,0,8,4],limit))
+    print(ab([17,1,3,16,19,0],limit))
     print(ab([0,3,6],limit))
     print(ab([1,3,2],limit))
     print(ab([2,1,3],limit))
     print(ab([1,2,3],limit))
     print(ab([2,3,1],limit))
     print(ab([3,1,2],limit))
+    print()
 
 
 

@@ -1,4 +1,3 @@
-
 f = open("in-11.raw", "r")
 old = f.read().splitlines()
 
@@ -13,10 +12,21 @@ def neigh(y,x,old):
           ( 1,-1), ( 1, 0), ( 1, 1))
     ret = 0
     for n in ns:
-      nx = x + n[1]
-      ny = y + n[0]
-      if (0 <= nx) and (nx < lenx) and (0 <= ny) and (ny < leny) and (old[ny][nx] == '#'):
-          ret += 1
+        empty = True
+        i = 1
+        while empty:
+            nx = x + n[1] * i
+            ny = y + n[0] * i
+            if (0 <= nx) and (nx < lenx) and (0 <= ny) and (ny < leny):
+                if (old[ny][nx] != '.'):
+                    empty = False
+                if (old[ny][nx] == '#'):
+                    ret += 1
+            else:
+                empty = False
+            i+=1
+#a        if (0 <= nx) and (nx < lenx) and (0 <= ny) and (ny < leny) and (old[ny][nx] == '#'):
+#a            ret += 1
     return(ret)
 
 flips = 1
@@ -34,7 +44,7 @@ while flips > 0:
                 else:
                     nw[y][x] = 'L'
             elif old[y][x] == '#':
-                if neigh(y,x,old) >= 4:
+                if neigh(y,x,old) >= 5: #a 4:
                     nw[y][x] = 'L'
                     flips += 1
                 else:
